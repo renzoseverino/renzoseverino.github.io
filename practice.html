@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Eco I - Preguntas de Practica</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>Eco I - Preguntas de Practica</h1>
+        <p>8 preguntas en orden aleatorio</p>
+      </div>
+      <div class="timer" aria-live="polite">
+        <span>Tiempo</span>
+        <strong id="timer">30:00</strong>
+      </div>
+    </header>
+
+    <main class="shell">
+      <section id="intro" class="panel">
+        <h2>Preguntas cargadas.</h2>
+        <p>Cuando inicies, las preguntas apareceran en orden aleatorio y el temporizador empezara a correr.</p>
+        <button id="startBtn" class="primary">Iniciar practica</button>
+      </section>
+
+      <form id="quizForm" class="quiz hidden">
+        <div id="questions"></div>
+        <div class="actions">
+          <button type="submit" class="primary">Enviar respuestas</button>
+        </div>
+      </form>
+
+      <section id="results" class="results hidden" aria-live="polite">
+        <h2>Revision</h2>
+        <div id="resultList"></div>
+        <button id="retryBtn" class="secondary">Intentar otra vez</button>
+      </section>
+    </main>
+
+    <script src="questions-data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

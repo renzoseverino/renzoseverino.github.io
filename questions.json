@@ -1,0 +1,106 @@
+[
+  {
+    "id": 1,
+    "question": "Una función de producción depende solo de dos insumos “K” y “L”. Se sabe que, si el uso de ambos insumos es reducido en el mismo porcentaje, entonces, la cantidad producida siempre cae, pero en un porcentaje menor. Por ejemplo, si la cantidad usada de ambos insumos se reduce en 50%, entonces, la cantidad producida cae en 43%. Consecuentemente, es posible afirmar con certeza que:",
+    "image": "",
+    "choices": [
+      "Siempre existirán economías a escala ante incrementos de la producción; es decir, si aumenta la cantidad producida, entonces, el costo medio de largo plazo siempre se incrementará.",
+      "Siempre existirán deseconomías a escala ante incrementos de la producción; es decir, si aumenta la cantidad producida, entonces, el costo medio de largo plazo siempre se incrementará.",
+      "Siempre existirán economías a escala ante incrementos de la cantidad producida; es decir, si aumenta la cantidad producida, entonces, el costo medio de largo plazo siempre se reducirá.",
+      "Siempre existirán deseconomías a escala ante incrementos de la cantidad producida; es decir, si aumenta la cantidad producida, entonces, el costo medio de largo plazo siempre se reducirá.",
+      "Ninguna de las alternativas anteriores es correcta."
+    ],
+    "answer": 1
+  },
+  {
+    "id": 2,
+    "question": "El siguiente gráfico muestra el precio (P) que acepta una empresa que participa en un mercado perfectamente competitivo y el comportamiento de su costo variable medio (CVMe) y de su costo marginal (CMg) ante cambios en la cantidad producida (q). Si las funciones de producción y costos de dicha empresa son típicas y de corto plazo, identifique cuál de las alternativas que siguen al gráfico es falsa sobre la base de las afirmaciones que contiene cada alternativa.",
+    "image": "images/question2.png",
+    "choices": [
+      "El beneficio marginal es negativo para la unidad “qC”.",
+      "El beneficio marginal es nulo para la unidad “qB”.",
+      "El beneficio total es nulo para la unidad “qB”.",
+      "Cuando la empresa produce y vende “qA”, obtiene el mayor beneficio marginal posible.",
+      "Cuando la empresa produce y vende “qB”, obtiene el mayor beneficio total posible."
+    ],
+    "answer": 2
+  },
+  {
+    "id": 3,
+    "question": "La función de producción de mangos de la empresa APP depende de tres insumos: el trabajo (L), el capital (K) y el ganado (G). Se sabe que cada unidad de “L” usada en el proceso productivo siempre incrementa la cantidad producida en 100 mangos. A su vez, cada unidad de “K” usada en el proceso productivo siempre incrementa la cantidad producida en 35 mangos. Finalmente, cada unidad de “G” usada en el proceso productivo siempre incrementa la cantidad producida en 160 mangos. Por su parte, los precios de los insumos “L”, “K” y “G” son 20, 10 y 40 soles, respectivamente. Si APP desea producir 700 mangos, entonces, para minimizar costos en largo plazo debe:",
+    "image": "",
+    "choices": [
+      "Usar únicamente 100 unidades de “L”.",
+      "Usar únicamente 35 unidades de “K”.",
+      "Usar únicamente 160 unidades de “G”.",
+      "Usar únicamente 7 unidades de “L”.",
+      "Existen infinitas combinaciones de “K” y “G” que minimizan costos."
+    ],
+    "answer": 3
+  },
+  {
+    "id": 4,
+    "question": "El siguiente gráfico presenta la situación de un monopolista que puede discriminar de modo perfecto; es decir, en primer grado. Sobre la base de ello, determine cuál de las afirmaciones que siguen al gráfico es falsa. Asuma que los precios son medidos en soles.",
+    "image": "images/question4.png",
+    "choices": [
+      "La demanda del monopolista (D) es igual que el precio (P); además, es igual que el ingreso medio (IMe) y que el Ingreso Marginal (IMg).",
+      "Si el monopolista produce y vende la unidad 1.000, entonces, el beneficio marginal de dicha unidad es de 40 soles.",
+      "Si el monopolista produce y vende la cantidad que le permite maximizar beneficios con una estrategia de discriminación de primer grado, entonces, la pérdida de eficiencia social que corresponde a la unidad 1.000 es de 40 soles.",
+      "Si el monopolista produce y vende la cantidad que le permite maximizar beneficios con una estrategia de discriminación de primer grado, entonces, su beneficio total es de 98.000 soles.",
+      "Si el monopolista produce y vende la cantidad que le permite maximizar beneficios con una estrategia de discriminación de primer grado, entonces, no existe pérdida de eficiencia social."
+    ],
+    "answer": 2
+  },
+  {
+    "id": 5,
+    "question": "Sobre externalidades, determine la alternativa que es verdadera.",
+    "image": "images/question5.png",
+    "choices": [
+      "El gráfico corresponde a una situación en la cual los ofertantes generan costos externos de 30 soles por unidad producida.",
+      "El gráfico corresponde a una situación en la cual los ofertantes generan beneficios externos de 30 soles por unidad producida.",
+      "Una situación que puede llevar a la externalidad mostrada en el gráfico es la de un mercado minero donde las empresas botan relaves a ríos que contaminan el agua que beben comunidades campesinas que no participan del mercado minero.",
+      "Una situación que puede llevar a la externalidad mostrada en el gráfico es la del mercado de vacunas, ya que los consumidores de vacunas contra enfermedades obtienen beneficios privados y, simultáneamente, generan beneficios externos, ya que no contagian enfermedades a quienes no están vacunados.",
+      "Una situación que puede llevar a la externalidad mostrada en el gráfico es la del mercado de cigarrillos, ya que los consumidores de cigarrillos obtienen beneficios privados y, simultáneamente, cuando consumen cigarrillos en lugares públicos, generan costos externos de salud a los no fumadores."
+    ],
+    "answer": 3
+  },
+  {
+    "id": 6,
+    "question": "Sobre externalidades, determine la alternativa que es totalmente verdadera.",
+    "image": "images/question6.png",
+    "choices": [
+      "El gráfico corresponde a una externalidad negativa generada en el proceso de consumo del bien. De allí que, si no es corregida (internalizada), el mercado genera una pérdida de eficiencia social de 9.000 soles.",
+      "El gráfico corresponde a una externalidad positiva generada en el proceso de consumo del bien. De allí que, si no es corregida (internalizada), el mercado genera una ganancia de eficiencia social de 9.000 soles.",
+      "Una manera de corregir la externalidad es aplicar un subsidio. En este caso, para corregir la falla de mercado, el Estado deberá gastar 27.000 soles en el subsidio.",
+      "Una manera de corregir la externalidad es aplicar un subsidio al consumo de 30 soles por unidad comprada, pero el subsidio genera una pérdida de eficiencia social de 4.500 soles.",
+      "Una manera de corregir la externalidad es aplicar un subsidio al consumo de 30 soles por unidad comprada, lo cual anula la pérdida de eficiencia social que genera la externalidad."
+    ],
+    "answer": 4
+  },
+  {
+    "id": 7,
+    "question": "Determine cuál de las siguientes afirmaciones es verdadera para el caso de un monopolista no discriminador, cuya función de demanda posee pendiente negativa y sus funciones de producción y costos son típicas. Asuma que las funciones de costos del monopolista son de largo plazo y que ese monopolista lograría obtener beneficios económicos positivos si produce la cantidad “Q*”, la cual corresponde a una situación en la que su IMg es igual que su CMg.",
+    "image": "",
+    "choices": [
+      "Definitivamente, la cantidad “Q*” genera un costo medio que corresponde al tramo creciente de la función de los costos medios del monopolista.",
+      "Para que no exista pérdida de eficiencia social, la cantidad producida por el monopolista debe ser menor que “Q*”.",
+      "Si el monopolista produce una cantidad mayor que “Q*”, definitivamente aumentará sus beneficios, debido a que el CMe está en su tramo decreciente.",
+      "Suponga que el monopolista produce una cantidad que corresponde al tramo inelástico de su curva de demanda. Partiendo de ese nivel de producción una subida del precio disminuirá su ingreso total por ventas y lo llevará a disminuir su costo total (asuma que esos cambios no lo retiran del tramo inelástico de la demanda).",
+      "Suponga que el monopolista produce una cantidad que corresponde al tramo inelástico de su curva de demanda. Partiendo de ese nivel de producción una subida del precio aumentará su ingreso total por ventas y lo llevará a disminuir costo total (asuma que esos cambios no lo retiran del tramo inelástico de la demanda)."
+    ],
+    "answer": 4
+  },
+  {
+    "id": 8,
+    "question": "Considerando que el siguiente gráfico corresponde a una empresa que no participa en un mercado perfectamente competitivo, determine cuál de las afirmaciones que siguen al gráfico es verdadera.",
+    "image": "images/question8.png",
+    "choices": [
+      "Si el gráfico representa a un monopolista no discriminador, es imposible que Q* y P* cumplan las condiciones para maximizar beneficios, ya que los beneficios contables o monetarios para permanecer en el mercado siempre deben ser positivos.",
+      "Si el gráfico representa a una empresa que responde a un modelo de mercado de competencia monopolística, entonces, no existe pérdida de eficiencia social en dicho mercado.",
+      "Si el gráfico representa a una empresa que responde a un modelo de mercado de competencia monopolística y una entidad reguladora fuerza a la empresa a vender a un nivel que correspondería a la cantidad y al precio de una situación de competencia perfecta, entonces, los beneficios económicos de la empresa siguen siendo positivos.",
+      "Si el gráfico representa a una empresa que responde a un modelo de competencia monopolística, entonces, dicha empresa se encuentra en un equilibrio de mercado de corto plazo.",
+      "Si el gráfico representa a una empresa que responde a un modelo de competencia monopolística, entonces, dicha empresa se encuentra en un equilibrio de mercado de largo plazo."
+    ],
+    "answer": 4
+  }
+]

@@ -1,0 +1,272 @@
+:root {
+  color-scheme: light;
+  --ink: #1d2430;
+  --muted: #5f6978;
+  --line: #d7dde6;
+  --surface: #ffffff;
+  --page: #f3f6f8;
+  --accent: #0f766e;
+  --accent-strong: #0b5e58;
+  --right: #16803c;
+  --wrong: #b42318;
+  --focus: #d99a00;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px clamp(16px, 4vw, 48px);
+  background: #ffffff;
+  border-bottom: 1px solid var(--line);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 2px;
+  font-size: clamp(1.25rem, 3vw, 1.8rem);
+  line-height: 1.15;
+}
+
+.topbar p {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.timer {
+  min-width: 112px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  text-align: right;
+  background: #f8fafc;
+}
+
+.timer span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.timer strong {
+  display: block;
+  font-size: 1.35rem;
+  line-height: 1.1;
+}
+
+.shell {
+  width: min(980px, calc(100% - 32px));
+  margin: 28px auto 56px;
+}
+
+.panel,
+.question,
+.results {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 10px 24px rgba(29, 36, 48, 0.05);
+}
+
+.panel,
+.results {
+  padding: clamp(18px, 4vw, 32px);
+}
+
+.hidden {
+  display: none;
+}
+
+.quiz {
+  display: grid;
+  gap: 18px;
+}
+
+.question {
+  padding: clamp(16px, 3vw, 26px);
+}
+
+.questionHeader {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.number {
+  flex: 0 0 auto;
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #e7f4f2;
+  color: var(--accent-strong);
+  font-weight: 700;
+}
+
+.question h3 {
+  margin-bottom: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.question img {
+  display: block;
+  width: min(100%, 560px);
+  height: auto;
+  margin: 16px auto;
+  border: 1px solid #b8c1cc;
+  background: white;
+}
+
+.choices {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.choice {
+  display: grid;
+  grid-template-columns: 22px 28px 1fr;
+  gap: 10px;
+  align-items: start;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcfd;
+  cursor: pointer;
+}
+
+.choice:hover {
+  border-color: #98a7b8;
+}
+
+.choice input {
+  width: 18px;
+  height: 18px;
+  margin: 3px 0 0;
+  accent-color: var(--accent);
+}
+
+.letter {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+button {
+  min-height: 44px;
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.primary {
+  background: var(--accent);
+  color: white;
+}
+
+.primary:hover {
+  background: var(--accent-strong);
+}
+
+.secondary {
+  margin-top: 20px;
+  border: 1px solid var(--line);
+  background: white;
+  color: var(--ink);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 8px 0 0;
+}
+
+.resultItem {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.resultItem:last-child {
+  border-bottom: 0;
+}
+
+.resultStatus {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  margin-bottom: 8px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.resultStatus.correct {
+  background: #e9f7ee;
+  color: var(--right);
+}
+
+.resultStatus.incorrect {
+  background: #fff0ed;
+  color: var(--wrong);
+}
+
+.answerLine {
+  margin: 6px 0 0;
+}
+
+.answerLine strong {
+  color: var(--ink);
+}
+
+.locked .choice {
+  cursor: default;
+}
+
+@media (max-width: 640px) {
+  .topbar {
+    align-items: flex-start;
+  }
+
+  .timer {
+    min-width: 88px;
+  }
+
+  .choice {
+    grid-template-columns: 22px 24px 1fr;
+    padding: 10px;
+  }
+}
