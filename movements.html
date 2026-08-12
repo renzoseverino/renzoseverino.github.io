@@ -493,7 +493,7 @@
 
       <aside class="side-panel" aria-label="Datos del equilibrio">
         <section class="stat-box">
-          <p class="stat-title">Equilibrio inicial</p>
+          <p class="stat-title">E<sub>0</sub></p>
           <div class="stat-grid">
             <div class="metric">
               <strong id="oldPrice">50</strong>
@@ -506,7 +506,7 @@
           </div>
         </section>
         <section class="stat-box">
-          <p class="stat-title">Equilibrio final</p>
+          <p class="stat-title">E<sub>1</sub></p>
           <div class="stat-grid">
             <div class="metric">
               <strong id="newPrice">--</strong>
@@ -689,10 +689,10 @@
 
     function shiftsFor(answer) {
       const result = { demandShift: 0, supplyShift: 0 };
-      if (answer.includes("demand-up")) result.demandShift += 18;
-      if (answer.includes("demand-down")) result.demandShift -= 18;
-      if (answer.includes("supply-up")) result.supplyShift -= 18;
-      if (answer.includes("supply-down")) result.supplyShift += 18;
+      if (answer.includes("demand-up")) result.demandShift += 20;
+      if (answer.includes("demand-down")) result.demandShift -= 20;
+      if (answer.includes("supply-up")) result.supplyShift -= 20;
+      if (answer.includes("supply-down")) result.supplyShift += 20;
       return result;
     }
 
@@ -767,10 +767,10 @@
           <line class="equilibrium-line" x1="${x(finalEq.q)}" y1="${y(finalEq.p)}" x2="${x(finalEq.q)}" y2="${margin.top + plotH}"></line>
           <line class="equilibrium-line" x1="${margin.left}" y1="${y(finalEq.p)}" x2="${x(finalEq.q)}" y2="${y(finalEq.p)}"></line>
           <circle class="equilibrium-dot" cx="${x(finalEq.q)}" cy="${y(finalEq.p)}" r="7"></circle>
-          <text class="label" x="${clamp(x(finalEq.q) + 11, margin.left + 8, width - 92)}" y="${clamp(y(finalEq.p) - 12, margin.top + 18, height - 78)}">E final</text>
+          <text class="label" x="${clamp(x(finalEq.q) + 11, margin.left + 8, width - 92)}" y="${clamp(y(finalEq.p) - 12, margin.top + 18, height - 78)}">E₁</text>
         ` : ""}
         <circle class="old-dot" cx="${x(oldEq.q)}" cy="${y(oldEq.p)}" r="6"></circle>
-        <text class="label" x="${x(oldEq.q) + 10}" y="${y(oldEq.p) + 22}">E inicial</text>
+        <text class="label" x="${x(oldEq.q) + 10}" y="${y(oldEq.p) + 22}">E₀</text>
         <text class="label" x="${x(12)}" y="${y(demandPoint(12, 0)) - 12}">D</text>
         <text class="label" x="${x(86)}" y="${y(supplyPoint(86, 0)) - 12}">O</text>
         ${showFinal ? shiftedLabels(x, y, shift) : ""}
