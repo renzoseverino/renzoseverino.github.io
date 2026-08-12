@@ -1,0 +1,867 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Oferta y demanda: desplazamientos</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17202a;
+      --muted: #5a6878;
+      --line: #c8d1dc;
+      --panel: #ffffff;
+      --panel-soft: #f7f9fc;
+      --demand: #2f6fb2;
+      --demand-soft: #8fb8e3;
+      --supply: #bd5347;
+      --supply-soft: #e0a29b;
+      --eq: #214f3a;
+      --accent: #1e7c68;
+      --wrong: #a6413b;
+      --right-bg: #e9f6f1;
+      --wrong-bg: #fff1ef;
+      --shadow: 0 18px 60px rgba(23, 32, 42, .14);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, rgba(23, 32, 42, .035) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(23, 32, 42, .035) 1px, transparent 1px),
+        #edf2f7;
+      background-size: 32px 32px;
+    }
+
+    main {
+      width: min(1120px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 28px 0 36px;
+    }
+
+    .app-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 280px;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .workspace {
+      background: rgba(255, 255, 255, .92);
+      border: 1px solid rgba(115, 128, 145, .26);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+
+    .topbar {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      align-items: start;
+      margin-bottom: 14px;
+    }
+
+    .scenario-box {
+      min-height: 86px;
+      padding: 16px 18px;
+      background: #ffffff;
+      border: 1px solid var(--line);
+    }
+
+    .scenario-kicker {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .scenario-text {
+      margin: 0;
+      font-size: clamp(18px, 2vw, 23px);
+      line-height: 1.25;
+      font-weight: 750;
+    }
+
+    .new-button {
+      height: 44px;
+      min-width: 148px;
+      border: 1px solid #174f43;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 750;
+      cursor: pointer;
+    }
+
+    .new-button:hover,
+    .check-button:hover {
+      filter: brightness(.95);
+    }
+
+    .control-strip {
+      display: grid;
+      grid-template-columns: minmax(220px, 1fr) auto;
+      gap: 12px;
+      align-items: end;
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: grid;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    select {
+      width: 100%;
+      min-height: 44px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      padding: 0 12px;
+      font: inherit;
+      font-weight: 650;
+    }
+
+    .check-button {
+      height: 44px;
+      min-width: 138px;
+      border: 1px solid #1b3e69;
+      background: #2f6fb2;
+      color: #fff;
+      font-weight: 750;
+      cursor: pointer;
+    }
+
+    .graph-window {
+      background: var(--panel-soft);
+      border: 1px solid var(--line);
+      height: min(58vh, 560px);
+      min-height: 430px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .axis {
+      stroke: #283747;
+      stroke-width: 2;
+    }
+
+    .grid {
+      stroke: rgba(90, 104, 120, .18);
+      stroke-width: 1;
+    }
+
+    .curve {
+      fill: none;
+      stroke-width: 4;
+      stroke-linecap: round;
+      transition: opacity .25s ease;
+    }
+
+    .curve.old {
+      stroke-dasharray: 8 8;
+      opacity: .46;
+    }
+
+    .curve.new {
+      stroke-dasharray: 900;
+      stroke-dashoffset: 900;
+      animation: drawCurve .8s ease forwards;
+    }
+
+    .curve.demand-old {
+      stroke: var(--demand-soft);
+    }
+
+    .curve.demand-new {
+      stroke: var(--demand);
+    }
+
+    .curve.supply-old {
+      stroke: var(--supply-soft);
+    }
+
+    .curve.supply-new {
+      stroke: var(--supply);
+    }
+
+    .equilibrium-line {
+      stroke: rgba(33, 79, 58, .45);
+      stroke-width: 1.5;
+      stroke-dasharray: 5 5;
+      opacity: 0;
+      animation: fadeIn .45s ease .8s forwards;
+    }
+
+    .equilibrium-dot {
+      fill: var(--eq);
+      stroke: #fff;
+      stroke-width: 3;
+      opacity: 0;
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: popIn .35s ease .75s forwards;
+    }
+
+    .old-dot {
+      fill: #6c7a89;
+      stroke: #fff;
+      stroke-width: 3;
+    }
+
+    .label {
+      fill: var(--ink);
+      font-size: 15px;
+      font-weight: 750;
+    }
+
+    .axis-label {
+      fill: var(--muted);
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 18px;
+      align-items: center;
+      padding: 11px 2px 0;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 18px;
+    }
+
+    .swatch {
+      width: 22px;
+      height: 3px;
+      background: currentColor;
+    }
+
+    .swatch.old {
+      background: repeating-linear-gradient(90deg, currentColor 0 6px, transparent 6px 10px);
+    }
+
+    .feedback {
+      min-height: 112px;
+      margin-top: 14px;
+      border: 1px solid var(--line);
+      background: #fff;
+      padding: 15px 16px;
+    }
+
+    .feedback.right {
+      border-color: #9ed5c1;
+      background: var(--right-bg);
+    }
+
+    .feedback.wrong {
+      border-color: #ebb1aa;
+      background: var(--wrong-bg);
+    }
+
+    .feedback h2 {
+      margin: 0 0 7px;
+      font-size: 18px;
+      line-height: 1.2;
+    }
+
+    .feedback p {
+      margin: 0;
+      color: #334155;
+      line-height: 1.48;
+      font-size: 15px;
+    }
+
+    .side-panel {
+      display: grid;
+      gap: 12px;
+    }
+
+    .stat-box,
+    .answer-box {
+      background: rgba(255, 255, 255, .92);
+      border: 1px solid rgba(115, 128, 145, .26);
+      padding: 14px;
+      box-shadow: 0 12px 36px rgba(23, 32, 42, .08);
+    }
+
+    .stat-title {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .metric {
+      border-left: 3px solid var(--line);
+      padding-left: 9px;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 22px;
+      line-height: 1.05;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 650;
+    }
+
+    .answer-box {
+      display: grid;
+      gap: 9px;
+    }
+
+    .answer-box button {
+      min-height: 38px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      font-weight: 750;
+      cursor: pointer;
+    }
+
+    .answer-box button.active {
+      border-color: #245f9d;
+      background: #eaf2fb;
+      color: #174a7d;
+    }
+
+    @keyframes drawCurve {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    @keyframes popIn {
+      0% {
+        opacity: 0;
+        transform: scale(.55);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 880px) {
+      main {
+        width: min(100vw - 20px, 720px);
+        padding-top: 12px;
+      }
+
+      .app-shell,
+      .topbar,
+      .control-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .new-button,
+      .check-button {
+        width: 100%;
+      }
+
+      .graph-window {
+        height: 54vh;
+        min-height: 360px;
+      }
+
+      .side-panel {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      main {
+        width: calc(100vw - 14px);
+      }
+
+      .workspace {
+        padding: 11px;
+      }
+
+      .scenario-box {
+        padding: 13px;
+      }
+
+      .scenario-text {
+        font-size: 18px;
+      }
+
+      .graph-window {
+        min-height: 330px;
+      }
+
+      .legend {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="app-shell">
+      <section class="workspace" aria-label="Práctica de oferta y demanda">
+        <div class="topbar">
+          <article class="scenario-box" aria-live="polite">
+            <div class="scenario-kicker">
+              <span id="scenarioNumber">Caso 1 de 25</span>
+            </div>
+            <p class="scenario-text" id="scenarioText"></p>
+          </article>
+          <button class="new-button" id="newScenario" type="button">Nuevo caso</button>
+        </div>
+
+        <div class="control-strip">
+          <label for="choice">
+            Selección del estudiante
+            <select id="choice">
+              <option value="">Elige un desplazamiento...</option>
+              <option value="demand-up">La demanda se expande</option>
+              <option value="demand-down">La demanda se contrae</option>
+              <option value="supply-up">La oferta se expande</option>
+              <option value="supply-down">La oferta se contrae</option>
+              <option value="demand-up+supply-up">La demanda se expande y la oferta se expande</option>
+              <option value="demand-up+supply-down">La demanda se expande y la oferta se contrae</option>
+              <option value="demand-down+supply-up">La demanda se contrae y la oferta se expande</option>
+              <option value="demand-down+supply-down">La demanda se contrae y la oferta se contrae</option>
+            </select>
+          </label>
+          <button class="check-button" id="checkAnswer" type="button">Comprobar</button>
+        </div>
+
+        <div class="graph-window">
+          <svg id="graph" role="img" aria-label="Gráfico de oferta y demanda"></svg>
+        </div>
+
+        <div class="legend" aria-label="Leyenda">
+          <span class="legend-item" style="color: var(--demand-soft)"><span class="swatch old"></span>Demanda inicial</span>
+          <span class="legend-item" style="color: var(--supply-soft)"><span class="swatch old"></span>Oferta inicial</span>
+          <span class="legend-item" style="color: var(--demand)"><span class="swatch"></span>Demanda final</span>
+          <span class="legend-item" style="color: var(--supply)"><span class="swatch"></span>Oferta final</span>
+        </div>
+
+        <section class="feedback" id="feedback" aria-live="polite">
+          <h2>Lee el caso y elige un desplazamiento.</h2>
+          <p>Cuando compruebes tu respuesta, el gráfico mostrará las curvas finales y el nuevo equilibrio.</p>
+        </section>
+      </section>
+
+      <aside class="side-panel" aria-label="Datos del equilibrio">
+        <section class="stat-box">
+          <p class="stat-title">Equilibrio inicial</p>
+          <div class="stat-grid">
+            <div class="metric">
+              <strong id="oldPrice">50</strong>
+              <span>Precio</span>
+            </div>
+            <div class="metric">
+              <strong id="oldQty">50</strong>
+              <span>Cantidad</span>
+            </div>
+          </div>
+        </section>
+        <section class="stat-box">
+          <p class="stat-title">Equilibrio final</p>
+          <div class="stat-grid">
+            <div class="metric">
+              <strong id="newPrice">--</strong>
+              <span>Precio</span>
+            </div>
+            <div class="metric">
+              <strong id="newQty">--</strong>
+              <span>Cantidad</span>
+            </div>
+          </div>
+        </section>
+        <section class="answer-box" aria-label="Navegación rápida de casos">
+          <p class="stat-title">Casos</p>
+          <button type="button" id="prevCase">Anterior</button>
+          <button type="button" id="nextCase">Siguiente</button>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <script>
+    const scenarios = [
+      {
+        text: "Un informe médico afirma que este bien es peligroso para la salud de los consumidores.",
+        answer: "demand-down",
+        reasoning: "La noticia reduce la disposición a comprar el bien a cada precio. La demanda se desplaza a la izquierda; el precio y la cantidad de equilibrio bajan."
+      },
+      {
+        text: "El ingreso de los consumidores aumenta y este bien es normal.",
+        answer: "demand-up",
+        reasoning: "Al ser un bien normal, un mayor ingreso hace que los consumidores quieran comprar más a cada precio. La demanda se desplaza a la derecha."
+      },
+      {
+        text: "Una nueva tecnología reduce los costos de producción de este bien.",
+        answer: "supply-up",
+        reasoning: "Con menores costos, las empresas pueden ofrecer más unidades a cada precio. La oferta se desplaza a la derecha."
+      },
+      {
+        text: "Sube el precio de una materia prima esencial para producir este bien.",
+        answer: "supply-down",
+        reasoning: "El mayor costo hace menos rentable producir a cada precio. La oferta se desplaza a la izquierda."
+      },
+      {
+        text: "Una campaña en redes sociales vuelve este bien muy popular entre los jóvenes.",
+        answer: "demand-up",
+        reasoning: "La popularidad aumenta las preferencias por el bien. A cada precio, los consumidores quieren comprar más."
+      },
+      {
+        text: "Aparece un sustituto más barato y de calidad similar.",
+        answer: "demand-down",
+        reasoning: "Si el sustituto se vuelve más atractivo, parte de los consumidores cambia de producto. La demanda del bien original disminuye."
+      },
+      {
+        text: "Un nuevo proveedor local empieza a vender insumos más baratos para producir este bien.",
+        answer: "supply-up",
+        reasoning: "Los insumos más baratos reducen el costo de producción. La oferta se expande porque los productores pueden ofrecer más a cada precio."
+      },
+      {
+        text: "Una regulación ambiental obliga a instalar equipos costosos para producir este bien.",
+        answer: "supply-down",
+        reasoning: "La regulación eleva los costos de producción. Por eso, a cada precio se ofrece una menor cantidad."
+      },
+      {
+        text: "Los consumidores esperan que el precio del bien suba el próximo mes.",
+        answer: "demand-up",
+        reasoning: "Si se espera un precio futuro más alto, muchos consumidores adelantan compras. La demanda actual se expande."
+      },
+      {
+        text: "Los productores esperan que el precio del bien suba el próximo mes y guardan inventario para vender después.",
+        answer: "supply-down",
+        reasoning: "Al reservar unidades para el futuro, los vendedores ofrecen menos hoy a cada precio. La oferta actual se contrae."
+      },
+      {
+        text: "Baja el precio de un bien complementario que suele consumirse junto con este producto.",
+        answer: "demand-up",
+        reasoning: "Cuando el complemento se abarata, usar ambos bienes se vuelve más atractivo. La demanda de este bien aumenta."
+      },
+      {
+        text: "Sube el precio de un bien complementario que se usa junto con este producto.",
+        answer: "demand-down",
+        reasoning: "El complemento más caro reduce el atractivo de consumir ambos bienes. La demanda de este bien disminuye."
+      },
+      {
+        text: "Entran nuevas empresas al mercado de este bien.",
+        answer: "supply-up",
+        reasoning: "Con más vendedores, el mercado ofrece más cantidad a cada precio. La oferta se desplaza a la derecha."
+      },
+      {
+        text: "Varias empresas salen del mercado por pérdidas acumuladas.",
+        answer: "supply-down",
+        reasoning: "Menos productores implica menor cantidad ofrecida a cada precio. La oferta se desplaza a la izquierda."
+      },
+      {
+        text: "Una moda pasajera termina y el bien deja de ser atractivo para muchos consumidores.",
+        answer: "demand-down",
+        reasoning: "El cambio en gustos reduce la disposición a comprar. La demanda se desplaza a la izquierda."
+      },
+      {
+        text: "La población de la ciudad aumenta rápidamente.",
+        answer: "demand-up",
+        reasoning: "Con más consumidores potenciales, se compran más unidades a cada precio. La demanda se expande."
+      },
+      {
+        text: "Una plaga destruye parte de la cosecha necesaria para producir este bien.",
+        answer: "supply-down",
+        reasoning: "La plaga reduce la disponibilidad de insumos y eleva costos. La cantidad ofrecida cae a cada precio."
+      },
+      {
+        text: "Mejoras logísticas reducen los costos de transporte para los vendedores.",
+        answer: "supply-up",
+        reasoning: "Al transportar más barato, vender el bien cuesta menos. La oferta se expande."
+      },
+      {
+        text: "Una tormenta daña varias fábricas que producían este bien.",
+        answer: "supply-down",
+        reasoning: "El daño reduce la capacidad productiva disponible. La oferta se contrae porque se puede vender menos a cada precio."
+      },
+      {
+        text: "Un estudio independiente muestra que el bien tiene beneficios importantes para la salud.",
+        answer: "demand-up",
+        reasoning: "La información positiva aumenta la valoración del producto. La demanda se desplaza a la derecha."
+      },
+      {
+        text: "Se agota temporalmente un insumo importado necesario para producir este bien.",
+        answer: "supply-down",
+        reasoning: "La escasez del insumo limita la producción y eleva costos. La oferta se contrae."
+      },
+      {
+        text: "Se automatiza una parte clave de la producción y aumenta la productividad.",
+        answer: "supply-up",
+        reasoning: "La productividad más alta permite producir más con los mismos recursos. La oferta se desplaza a la derecha."
+      },
+      {
+        text: "Una celebridad recomienda el producto, pero al mismo tiempo una huelga reduce la producción.",
+        answer: "demand-up+supply-down",
+        reasoning: "La recomendación expande la demanda, mientras que la huelga contrae la oferta. El precio final sube; la cantidad puede subir o bajar según la fuerza relativa de los desplazamientos."
+      },
+      {
+        text: "Aumenta la población interesada en el bien y, al mismo tiempo, entra una nueva tecnología que abarata producirlo.",
+        answer: "demand-up+supply-up",
+        reasoning: "Más compradores desplazan la demanda a la derecha y la tecnología desplaza la oferta a la derecha. La cantidad final sube; el precio puede subir o bajar según qué desplazamiento sea mayor."
+      },
+      {
+        text: "Se descubre que el producto contamina más de lo esperado y, además, una norma obliga a usar filtros costosos.",
+        answer: "demand-down+supply-down",
+        reasoning: "La mala reputación contrae la demanda y la norma eleva costos, contrayendo la oferta. La cantidad final baja; el precio puede subir o bajar según qué curva se desplace más."
+      }
+    ];
+
+    const answerLabels = {
+      "demand-up": "la demanda se expande",
+      "demand-down": "la demanda se contrae",
+      "supply-up": "la oferta se expande",
+      "supply-down": "la oferta se contrae",
+      "demand-up+supply-up": "la demanda se expande y la oferta se expande",
+      "demand-up+supply-down": "la demanda se expande y la oferta se contrae",
+      "demand-down+supply-up": "la demanda se contrae y la oferta se expande",
+      "demand-down+supply-down": "la demanda se contrae y la oferta se contrae"
+    };
+
+    const svg = document.getElementById("graph");
+    const scenarioText = document.getElementById("scenarioText");
+    const scenarioNumber = document.getElementById("scenarioNumber");
+    const choice = document.getElementById("choice");
+    const feedback = document.getElementById("feedback");
+    const oldPrice = document.getElementById("oldPrice");
+    const oldQty = document.getElementById("oldQty");
+    const newPrice = document.getElementById("newPrice");
+    const newQty = document.getElementById("newQty");
+
+    let currentIndex = Math.floor(Math.random() * scenarios.length);
+    let revealed = false;
+
+    const base = {
+      demandA: 100,
+      demandB: 1,
+      supplyC: 0,
+      supplyD: 1
+    };
+
+    function shiftsFor(answer) {
+      const result = { demandShift: 0, supplyShift: 0 };
+      if (answer.includes("demand-up")) result.demandShift += 18;
+      if (answer.includes("demand-down")) result.demandShift -= 18;
+      if (answer.includes("supply-up")) result.supplyShift -= 18;
+      if (answer.includes("supply-down")) result.supplyShift += 18;
+      return result;
+    }
+
+    function equilibrium(demandShift, supplyShift) {
+      const a = base.demandA + demandShift;
+      const c = base.supplyC + supplyShift;
+      const q = (a - c) / (base.demandB + base.supplyD);
+      const p = c + base.supplyD * q;
+      return { q, p };
+    }
+
+    function demandPoint(q, demandShift) {
+      return base.demandA + demandShift - base.demandB * q;
+    }
+
+    function supplyPoint(q, supplyShift) {
+      return base.supplyC + supplyShift + base.supplyD * q;
+    }
+
+    function clamp(value, min, max) {
+      return Math.max(min, Math.min(max, value));
+    }
+
+    function renderGraph(showFinal) {
+      const rect = svg.getBoundingClientRect();
+      const width = Math.max(320, rect.width || 760);
+      const height = Math.max(320, rect.height || 460);
+      const margin = {
+        top: 34,
+        right: width < 520 ? 26 : 46,
+        bottom: 54,
+        left: width < 520 ? 52 : 68
+      };
+      const plotW = width - margin.left - margin.right;
+      const plotH = height - margin.top - margin.bottom;
+      const xMax = 110;
+      const yMax = 120;
+      const x = q => margin.left + (q / xMax) * plotW;
+      const y = p => margin.top + plotH - (p / yMax) * plotH;
+
+      const scenario = scenarios[currentIndex];
+      const shift = shiftsFor(scenario.answer);
+      const oldEq = equilibrium(0, 0);
+      const finalEq = equilibrium(shift.demandShift, shift.supplyShift);
+      oldPrice.textContent = Math.round(oldEq.p);
+      oldQty.textContent = Math.round(oldEq.q);
+      newPrice.textContent = showFinal ? Math.round(finalEq.p) : "--";
+      newQty.textContent = showFinal ? Math.round(finalEq.q) : "--";
+
+      const oldDemand = makePath(x, y, q => demandPoint(q, 0));
+      const oldSupply = makePath(x, y, q => supplyPoint(q, 0));
+      const newDemand = makePath(x, y, q => demandPoint(q, shift.demandShift));
+      const newSupply = makePath(x, y, q => supplyPoint(q, shift.supplyShift));
+
+      svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+      svg.innerHTML = `
+        <defs>
+          <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,6 L8,3 z" fill="#283747"></path>
+          </marker>
+        </defs>
+        ${gridLines(x, y, xMax, yMax)}
+        <line class="axis" x1="${margin.left}" y1="${margin.top + plotH}" x2="${margin.left + plotW + 10}" y2="${margin.top + plotH}" marker-end="url(#arrow)"></line>
+        <line class="axis" x1="${margin.left}" y1="${margin.top + plotH}" x2="${margin.left}" y2="${margin.top - 10}" marker-end="url(#arrow)"></line>
+        <text class="axis-label" x="${margin.left + plotW - 42}" y="${height - 16}">Cantidad</text>
+        <text class="axis-label" x="${margin.left - 40}" y="${margin.top - 16}">Precio</text>
+        <path class="curve old demand-old" d="${oldDemand}"></path>
+        <path class="curve old supply-old" d="${oldSupply}"></path>
+        ${showFinal ? `
+          <path class="curve new demand-new" d="${newDemand}"></path>
+          <path class="curve new supply-new" d="${newSupply}"></path>
+          <line class="equilibrium-line" x1="${x(finalEq.q)}" y1="${y(finalEq.p)}" x2="${x(finalEq.q)}" y2="${margin.top + plotH}"></line>
+          <line class="equilibrium-line" x1="${margin.left}" y1="${y(finalEq.p)}" x2="${x(finalEq.q)}" y2="${y(finalEq.p)}"></line>
+          <circle class="equilibrium-dot" cx="${x(finalEq.q)}" cy="${y(finalEq.p)}" r="7"></circle>
+          <text class="label" x="${clamp(x(finalEq.q) + 11, margin.left + 8, width - 92)}" y="${clamp(y(finalEq.p) - 12, margin.top + 18, height - 78)}">E final</text>
+        ` : ""}
+        <circle class="old-dot" cx="${x(oldEq.q)}" cy="${y(oldEq.p)}" r="6"></circle>
+        <text class="label" x="${x(oldEq.q) + 10}" y="${y(oldEq.p) + 22}">E inicial</text>
+        <text class="label" x="${x(12)}" y="${y(demandPoint(12, 0)) - 12}">D</text>
+        <text class="label" x="${x(86)}" y="${y(supplyPoint(86, 0)) - 12}">O</text>
+        ${showFinal ? shiftedLabels(x, y, shift) : ""}
+      `;
+    }
+
+    function makePath(x, y, priceFn) {
+      const points = [];
+      for (let q = 0; q <= 105; q += 5) {
+        points.push(`${x(q).toFixed(1)},${y(priceFn(q)).toFixed(1)}`);
+      }
+      return `M${points.join(" L")}`;
+    }
+
+    function gridLines(x, y, xMax, yMax) {
+      const lines = [];
+      for (let q = 20; q <= 100; q += 20) {
+        lines.push(`<line class="grid" x1="${x(q)}" y1="${y(0)}" x2="${x(q)}" y2="${y(yMax)}"></line>`);
+        lines.push(`<text class="axis-label" x="${x(q) - 6}" y="${y(0) + 20}">${q}</text>`);
+      }
+      for (let p = 20; p <= 100; p += 20) {
+        lines.push(`<line class="grid" x1="${x(0)}" y1="${y(p)}" x2="${x(xMax)}" y2="${y(p)}"></line>`);
+        lines.push(`<text class="axis-label" x="${x(0) - 34}" y="${y(p) + 4}">${p}</text>`);
+      }
+      return lines.join("");
+    }
+
+    function shiftedLabels(x, y, shift) {
+      const labels = [];
+      if (shift.demandShift !== 0) {
+        const q = shift.demandShift > 0 ? 22 : 8;
+        labels.push(`<text class="label" x="${x(q)}" y="${y(demandPoint(q, shift.demandShift)) - 12}">D'</text>`);
+      }
+      if (shift.supplyShift !== 0) {
+        const q = shift.supplyShift > 0 ? 74 : 92;
+        labels.push(`<text class="label" x="${x(q)}" y="${y(supplyPoint(q, shift.supplyShift)) - 12}">O'</text>`);
+      }
+      return labels.join("");
+    }
+
+    function loadScenario(index) {
+      currentIndex = (index + scenarios.length) % scenarios.length;
+      revealed = false;
+      scenarioText.textContent = scenarios[currentIndex].text;
+      scenarioNumber.textContent = `Caso ${currentIndex + 1} de ${scenarios.length}`;
+      choice.value = "";
+      feedback.className = "feedback";
+      feedback.innerHTML = "<h2>Lee el caso y elige un desplazamiento.</h2><p>Cuando compruebes tu respuesta, el gráfico mostrará las curvas finales y el nuevo equilibrio.</p>";
+      renderGraph(false);
+      updateCaseButtons();
+    }
+
+    function updateCaseButtons() {
+      document.querySelectorAll(".answer-box button").forEach(button => button.classList.remove("active"));
+    }
+
+    function checkAnswer() {
+      const selected = choice.value;
+      if (!selected) {
+        feedback.className = "feedback wrong";
+        feedback.innerHTML = "<h2>Falta una selección.</h2><p>Elige una opción del menú para ver el desplazamiento y la explicación.</p>";
+        return;
+      }
+
+      const scenario = scenarios[currentIndex];
+      const correct = selected === scenario.answer;
+      revealed = true;
+      renderGraph(true);
+      feedback.className = correct ? "feedback right" : "feedback wrong";
+      feedback.innerHTML = `
+        <h2>${correct ? "Correcto." : "No exactamente."}</h2>
+        <p>${correct ? "Tu elección coincide con el caso:" : `Elegiste ${answerLabels[selected]}, pero la respuesta correcta es ${answerLabels[scenario.answer]}.`} ${scenario.reasoning}</p>
+      `;
+    }
+
+    document.getElementById("checkAnswer").addEventListener("click", checkAnswer);
+    document.getElementById("newScenario").addEventListener("click", () => {
+      let next = Math.floor(Math.random() * scenarios.length);
+      if (scenarios.length > 1) {
+        while (next === currentIndex) next = Math.floor(Math.random() * scenarios.length);
+      }
+      loadScenario(next);
+    });
+    document.getElementById("prevCase").addEventListener("click", () => loadScenario(currentIndex - 1));
+    document.getElementById("nextCase").addEventListener("click", () => loadScenario(currentIndex + 1));
+    window.addEventListener("resize", () => renderGraph(revealed));
+    choice.addEventListener("keydown", event => {
+      if (event.key === "Enter") checkAnswer();
+    });
+
+    loadScenario(currentIndex);
+  </script>
+</body>
+</html>
