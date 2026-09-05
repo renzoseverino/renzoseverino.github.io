@@ -103,3 +103,17 @@ This file maps the local files used by each HTML page, grouped by folder.
 - `images/question6.png`
 - `images/question8.png`
 
+## intervention.html
+
+### assets
+
+- `assets/css/intervention.css`
+- `assets/js/intervention.js`
+
+### docs
+
+- None.
+
+### images
+
+- None.

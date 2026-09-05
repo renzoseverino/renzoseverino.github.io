@@ -1,0 +1,361 @@
+:root {
+  --page: #f4f7f8;
+  --surface: #ffffff;
+  --ink: #202631;
+  --muted: #647184;
+  --line: #d7dfe7;
+  --axis: #303846;
+  --demand: #1f6f8b;
+  --supply: #8a4f2a;
+  --policy: #7f1d1d;
+  --cs: rgba(113, 171, 226, 0.46);
+  --ps: rgba(235, 126, 126, 0.42);
+  --gr: rgba(113, 184, 139, 0.5);
+  --ge: rgba(245, 208, 91, 0.6);
+  --dwl: rgba(124, 132, 145, 0.5);
+  --focus: #c98900;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--page);
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+  gap: 20px;
+  width: min(1240px, calc(100% - 32px));
+  margin: 24px auto;
+}
+
+.controls,
+.graphPanel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.controls {
+  align-self: start;
+  display: grid;
+  gap: 18px;
+  padding: 22px;
+}
+
+.titleBlock {
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 6px;
+  font-size: 1.55rem;
+  line-height: 1.15;
+}
+
+h2 {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+p {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.controlGroup {
+  display: grid;
+  gap: 10px;
+}
+
+.equation {
+  width: fit-content;
+  padding: 5px 9px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #f7fafc;
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 0.95rem;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+output {
+  min-width: 54px;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+input[type="range"] {
+  width: 100%;
+  accent-color: #1f6f8b;
+}
+
+.segmented {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  margin: 0;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #f5f8fb;
+}
+
+.policyLineSecondary {
+  stroke: var(--policy);
+  stroke-width: 2;
+  stroke-dasharray: 3 5;
+  fill: none;
+}
+
+.segmented label {
+  justify-content: center;
+  min-height: 38px;
+  border-radius: 6px;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.segmented input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.segmented label:has(input:checked) {
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(32, 38, 49, 0.16);
+  font-weight: 700;
+}
+
+.shadeControls {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.shadeControls label {
+  display: grid;
+  grid-template-columns: 18px 1fr auto;
+  min-height: 32px;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.shadeControls input {
+  width: 17px;
+  height: 17px;
+  margin: 0;
+  accent-color: #1f6f8b;
+}
+
+.shadeControls span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.shadeControls i {
+  width: 13px;
+  height: 13px;
+  border: 1px solid rgba(32, 38, 49, 0.2);
+}
+
+.areaValue {
+  min-width: 64px;
+  font-weight: 700;
+}
+
+.shadeControls .cs {
+  background: var(--cs);
+}
+
+.shadeControls .ps {
+  background: var(--ps);
+}
+
+.shadeControls .gr {
+  background: var(--gr);
+}
+
+.shadeControls .ge {
+  background: var(--ge);
+}
+
+.shadeControls .dwl {
+  background: var(--dwl);
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.graphPanel {
+  min-width: 0;
+  padding: 18px;
+}
+
+.graphHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 12px;
+}
+
+.graphHeader h2 {
+  margin-bottom: 4px;
+  font-size: 1.2rem;
+}
+
+#marketGraph {
+  display: block;
+  width: 100%;
+  height: min(68vh, 660px);
+  min-height: 430px;
+  border: 1px solid var(--line);
+  background: #fbfcfd;
+}
+
+.axis,
+.tick {
+  stroke: var(--axis);
+  stroke-width: 1;
+}
+
+.tickLabel {
+  fill: var(--muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.grid {
+  stroke: #e6ebf1;
+  stroke-width: 1;
+}
+
+.curveDemand {
+  stroke: var(--demand);
+  stroke-width: 3;
+  fill: none;
+}
+
+.curveSupply {
+  stroke: var(--supply);
+  stroke-width: 3;
+  fill: none;
+}
+
+.policyLine {
+  stroke: var(--policy);
+  stroke-width: 2.5;
+  stroke-dasharray: 9 6;
+  fill: none;
+}
+
+.guide {
+  stroke: #6d7786;
+  stroke-width: 1.25;
+  stroke-dasharray: 5 5;
+}
+
+.label {
+  fill: var(--ink);
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.axisLabel {
+  fill: var(--axis);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.softLabel {
+  fill: var(--muted);
+  font-size: 12px;
+}
+
+.point {
+  fill: var(--ink);
+}
+
+.csFill {
+  fill: var(--cs);
+}
+
+.psFill {
+  fill: var(--ps);
+}
+
+.dwlFill {
+  fill: var(--dwl);
+}
+
+.grFill {
+  fill: var(--gr);
+}
+
+.geFill {
+  fill: var(--ge);
+}
+
+@media (max-width: 860px) {
+  .app {
+    grid-template-columns: 1fr;
+  }
+
+  .graphHeader {
+    display: grid;
+  }
+
+  #marketGraph {
+    height: 62vh;
+    min-height: 360px;
+  }
+}
+
+@media (max-width: 520px) {
+  .app {
+    width: min(100% - 20px, 1240px);
+    margin: 10px auto 20px;
+  }
+
+  .controls,
+  .graphPanel {
+    padding: 14px;
+  }
+
+  .segmented {
+    grid-template-columns: 1fr;
+  }
+
+}

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Explorador de Políticas Económicas</title>
+    <link rel="stylesheet" href="assets/css/intervention.css">
+  </head>
+  <body>
+    <main class="app">
+      <section class="controls" aria-label="Parámetros del mercado">
+        <div class="titleBlock">
+          <h1>Explorador de Políticas Económicas</h1>
+          <p>Demanda y oferta lineales con intervenciones de política.</p>
+        </div>
+
+        <div class="controlGroup">
+          <h2>Demanda</h2>
+          <div class="equation">P = 48 + bQ</div>
+          <label for="demandSlope">
+            <span>b</span>
+            <output id="demandSlopeValue">-4</output>
+          </label>
+          <input id="demandSlope" type="range" min="-8" max="-2" step="1" value="-4">
+        </div>
+
+        <div class="controlGroup">
+          <h2>Oferta</h2>
+          <div class="equation">P = dQ</div>
+          <label for="supplySlope">
+            <span>d</span>
+            <output id="supplySlopeValue">4</output>
+          </label>
+          <input id="supplySlope" type="range" min="2" max="8" step="1" value="4">
+        </div>
+
+        <div class="controlGroup">
+          <h2>Política</h2>
+          <fieldset class="segmented" aria-label="Tipo de política">
+            <label>
+              <input type="radio" name="policyType" value="ceiling" checked>
+              <span>Precio máximo</span>
+            </label>
+            <label>
+              <input type="radio" name="policyType" value="floor">
+              <span>Precio mínimo</span>
+            </label>
+            <label>
+              <input type="radio" name="policyType" value="tax">
+              <span>Impuesto</span>
+            </label>
+            <label>
+              <input type="radio" name="policyType" value="subsidy">
+              <span>Subsidio</span>
+            </label>
+          </fieldset>
+
+          <label for="policyPrice">
+            <span id="policyLabel">Precio máximo</span>
+            <output id="policyPriceValue">20</output>
+          </label>
+          <input id="policyPrice" type="range" min="10" max="50" step="1" value="20">
+        </div>
+
+        <div class="controlGroup">
+          <h2>Sombreado</h2>
+          <fieldset class="shadeControls" aria-label="Áreas a sombrear">
+            <label>
+              <input type="checkbox" name="shadeArea" value="cs" checked>
+              <span><i class="cs"></i>Excedente del consumidor</span>
+              <output id="csValue" class="areaValue">—</output>
+            </label>
+            <label>
+              <input type="checkbox" name="shadeArea" value="ps" checked>
+              <span><i class="ps"></i>Excedente del productor</span>
+              <output id="psValue" class="areaValue">—</output>
+            </label>
+            <label>
+              <input type="checkbox" name="shadeArea" value="gr" checked>
+              <span><i class="gr"></i>Recaudación del gobierno</span>
+              <output id="grValue" class="areaValue">—</output>
+            </label>
+            <label>
+              <input type="checkbox" name="shadeArea" value="ge" checked>
+              <span><i class="ge"></i>Gasto del gobierno</span>
+              <output id="geValue" class="areaValue">—</output>
+            </label>
+            <label>
+              <input type="checkbox" name="shadeArea" value="dwl" checked>
+              <span><i class="dwl"></i>PES</span>
+              <output id="dwlValue" class="areaValue">—</output>
+            </label>
+          </fieldset>
+        </div>
+      </section>
+
+      <section class="graphPanel" aria-label="Gráfico del mercado">
+        <div class="graphHeader">
+          <div>
+            <h2 id="scenarioTitle">Precio máximo</h2>
+            <p id="scenarioNote">Mueve los controles para ver cómo cambian las áreas sombreadas.</p>
+          </div>
+        </div>
+        <svg id="marketGraph" role="img" aria-labelledby="graphTitle graphDesc">
+          <title id="graphTitle">Gráfico de demanda y oferta</title>
+          <desc id="graphDesc">Gráfico interactivo del mercado que muestra demanda, oferta, efectos de política, excedente del consumidor, excedente del productor, recaudación o gasto del gobierno y pérdida de eficiencia social.</desc>
+        </svg>
+      </section>
+    </main>
+
+    <script src="assets/js/intervention.js"></script>
+  </body>
+</html>
