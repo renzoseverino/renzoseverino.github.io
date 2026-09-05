@@ -127,9 +127,9 @@ async function loadQuestions() {
     return;
   }
 
-  const response = await fetch("questions.json");
+  const response = await fetch("assets/data/fquestions.json");
   if (!response.ok) {
-    throw new Error("No se pudo cargar questions.json");
+    throw new Error("No se pudo cargar fquestions.json");
   }
   questions = await response.json();
 }
