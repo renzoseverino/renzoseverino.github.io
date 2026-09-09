@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Supply and Demand Tax Cases</title>
+  <link rel="stylesheet" href="interactive-tax-grid.css">
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="legend" aria-label="Legend">
+        <span><i class="swatch cs"></i>Consumer surplus</span>
+        <span><i class="swatch ps"></i>Producer surplus</span>
+        <span><i class="swatch gr"></i>Government revenue</span>
+        <span><i class="swatch dwl"></i>Deadweight loss</span>
+      </div>
+    </header>
+
+    <section class="matrix" aria-label="Three by three grid of demand and supply cases">
+      <div class="corner">Demand x Supply</div>
+      <div class="heading">Perfectly Inelastic Supply</div>
+      <div class="heading">Upward-Sloping Supply</div>
+      <div class="heading">Perfectly Elastic Supply</div>
+
+      <div class="row-label">Perfectly<br>Inelastic<br>Demand</div>
+      <div class="cell excluded">Excluded</div>
+      <button class="cell flip-card" type="button" data-demand="inelastic" data-supply="upward" data-tax="true" aria-pressed="false" aria-label="Perfectly inelastic demand and upward-sloping supply. Click to show or hide tax case.">
+        <span class="flip-inner">
+          <span class="face front"></span>
+          <span class="face back"></span>
+        </span>
+      </button>
+      <div class="cell chart" data-demand="inelastic" data-supply="elastic"></div>
+
+      <div class="row-label">Downward<br>Sloping<br>Demand</div>
+      <div class="cell chart" data-demand="downward" data-supply="inelastic"></div>
+      <div class="cell chart" data-demand="downward" data-supply="upward"></div>
+      <div class="cell chart" data-demand="downward" data-supply="elastic"></div>
+
+      <div class="row-label">Perfectly<br>Elastic<br>Demand</div>
+      <div class="cell chart" data-demand="elastic" data-supply="inelastic"></div>
+      <button class="cell flip-card" type="button" data-demand="elastic" data-supply="upward" data-tax="true" aria-pressed="false" aria-label="Perfectly elastic demand and upward-sloping supply. Click to show or hide tax case.">
+        <span class="flip-inner">
+          <span class="face front"></span>
+          <span class="face back"></span>
+        </span>
+      </button>
+      <div class="cell excluded">Excluded</div>
+    </section>
+  </main>
+
+  <script src="interactive-tax-grid.js"></script>
+</body>
+</html>
