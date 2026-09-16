@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Preguntas de Examen Parcial - Economia General I</title>
+    <link rel="stylesheet" href="assets/css/midterm.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>Preguntas de Examen Parcial - Economia General I</h1>
+        <p>Tomadas de 2025-II y 2026-I</p>
+      </div>
+      <div class="timer" aria-live="polite">
+        <span>Tiempo</span>
+        <strong id="timer">30:00</strong>
+      </div>
+    </header>
+
+    <main class="shell">
+      <section id="intro" class="panel">
+        <h2>Preguntas cargadas</h2>
+        <p>Cuando inicies, 8 preguntas aleatorias aparecerán y el tiempo (30 minutos) empezará a correr.</p>
+        <button id="startBtn" class="primary" type="button">Iniciar práctica</button>
+      </section>
+
+      <form id="quizForm" class="quiz hidden">
+        <div id="questions"></div>
+        <div class="actions">
+          <button class="primary" type="submit">Enviar respuestas</button>
+        </div>
+      </form>
+
+      <section id="results" class="results hidden" aria-live="polite">
+        <h2>Revisión</h2>
+        <div id="resultList"></div>
+        <button id="retryBtn" class="secondary" type="button">Intentar otra vez</button>
+      </section>
+    </main>
+
+    <script src="assets/js/midterm-data.js"></script>
+    <script src="assets/js/midterm.js"></script>
+  </body>
+</html>

@@ -1,0 +1,242 @@
+window.PARCIAL_QUESTIONS = [
+  {
+    "id": 1,
+    "source": "2025-II",
+    "sourceQuestion": 1,
+    "question": "El siguiente gráfico muestra una expansión de la oferta; así como los puntos de equilibrio del mercado antes de dicha expansión y después de esa expansión, los cuales son respectivamente “A” y “B”.\n\nSobre la base de los datos que provee el gráfico previo, halle el valor de la elasticidad precio de la demanda con el método punto y el valor de la elasticidad precio de la demanda con el método arco (promedio o punto medio). Asuma que la elasticidad precio de la demanda con el método punto ha sido calculada en el punto “A”; mientras que la elasticidad precio de la demanda con el método arco ha sido calculada para los puntos “A” y “B”. Además, asuma que ambas elasticidades han sido calculadas en valor absoluto. A continuación, seleccione la alternativa que representa la suma de los valores de las dos elasticidades calculadas:",
+    "image": "images/2025-2_1.png",
+    "choices": [
+      "1,5",
+      "400",
+      "200",
+      "25",
+      "2,5"
+    ],
+    "answer": 4
+  },
+  {
+    "id": 2,
+    "source": "2025-II",
+    "sourceQuestion": 2,
+    "question": "El siguiente gráfico muestra una contracción de la demanda; así como los puntos de equilibrio del mercado antes de dicha contracción y después de esa contracción, los cuales son respectivamente “A” y “B”.\n\nSi la contracción de la demanda fue causada por una caída de 10% en el ingreso de los consumidores; entonces, la elasticidad ingreso de la demanda, calculada con el método punto, es:",
+    "image": "images/2025-2_2.png",
+    "choices": [
+      "-1",
+      "2,5",
+      "-2,5",
+      "4",
+      "-4"
+    ],
+    "answer": 3
+  },
+  {
+    "id": 3,
+    "source": "2025-II",
+    "sourceQuestion": 3,
+    "question": "Sobre la base de la información de la función de demanda lineal de un producto, ha sido determinado que, por cada sol que aumente el precio, entonces, la cantidad demandada de ese producto cae en 3 unidades. Actualmente, la cantidad demandada del producto es 10 unidades que corresponden a un precio del producto de 2 soles.\n\nLuego de calcular (con el método punto) la elasticidad precio de la demanda en el punto que señala el enunciado previo (es decir, donde la cantidad demandada del producto es 10 unidades y el precio del producto de 2 soles), es posible afirmar que:",
+    "image": "",
+    "choices": [
+      "Por cada 10% que aumente el precio del producto, su cantidad demandada caerá en 3%.",
+      "Por cada 1% que aumente el precio del producto, su cantidad demandada caerá en 3%.",
+      "Por cada 20% que aumente el precio del producto, su cantidad demandada caerá en 12%.",
+      "Por cada 6% que aumente el precio del producto, su cantidad demandada caerá en 10%.",
+      "Ninguna de las alternativas anteriores es correcta."
+    ],
+    "answer": 2
+  },
+  {
+    "id": 4,
+    "source": "2025-II",
+    "sourceQuestion": 4,
+    "question": "Sobre la base de la información de la función de demanda lineal de un producto, ha sido determinado que, por cada sol que aumente el precio, entonces, la cantidad demandada de ese producto cae en 3 unidades. Actualmente, la cantidad demandada del producto es 10 unidades que corresponden a un precio del producto de 2 soles.\n\nSobre la base de la información del producto que ha sido provista, explique cuál de las siguientes opciones debería ocurrir:",
+    "image": "",
+    "choices": [
+      "Si aumenta el precio del producto, entonces, el gasto del consumidor en dicho producto aumentará.",
+      "Si baja el precio del producto, entonces, el gasto del consumidor en dicho producto aumentará.",
+      "Si aumenta el precio del producto, entonces, el gasto del consumidor en dicho producto bajará.",
+      "Si baja el precio del producto, entonces, el gasto del consumidor en dicho producto bajará.",
+      "Más de una de las alternativas anteriores es correcta."
+    ],
+    "answer": 4
+  },
+  {
+    "id": 5,
+    "source": "2025-II",
+    "sourceQuestion": 5,
+    "question": "En un mercado competitivo, la oferta de un bien tiene pendiente positiva y su demanda tiene pendiente negativa (ambas funciones son rectas); mientras que la cantidad transada en equilibrio es de 100 unidades. En esa situación de equilibrio, es aplicado un impuesto específico (de monto fijo) a la oferta, el cual lleva a los demandantes a pagar 3 soles más por cada unidad comprada. A su vez, a causa del impuesto, los ofertantes reciben 6 soles menos por cada unidad vendida. Finalmente, la cantidad transada debido al impuesto se reduce a 80 unidades. Consecuentemente, el impuesto genera:",
+    "image": "",
+    "choices": [
+      "Una pérdida de eficiencia social de 9 soles.",
+      "Una pérdida de eficiencia social de 20 unidades transadas.",
+      "Una pérdida de eficiencia social de 90 soles.",
+      "Una pérdida de eficiencia social de 180 soles.",
+      "Una ganancia de eficiencia social de 20 unidades transadas."
+    ],
+    "answer": 2
+  },
+  {
+    "id": 6,
+    "source": "2025-II",
+    "sourceQuestion": 6,
+    "question": "En un mercado competitivo que está en equilibrio, la oferta de un bien tiene pendiente positiva y su demanda tiene pendiente negativa (ambas funciones son rectas). En esa situación de equilibrio, es aplicado un precio techo (precio máximo) cuyo valor es inferior que el del precio de equilibrio. Consecuentemente, entre los primeros efectos que genera dicho control de precios, se encuentran los dos siguientes:",
+    "image": "",
+    "choices": [
+      "Se reduce la oferta y, simultáneamente, se incrementa la cantidad demandada.",
+      "Se incrementa la cantidad ofertada y, simultáneamente, se reduce la demanda.",
+      "Se reduce la cantidad ofertada y, simultáneamente, se incrementa la cantidad demandada.",
+      "Se incrementa la oferta y, simultáneamente, se reduce la demanda.",
+      "Se reduce la oferta y, simultáneamente, se incrementa la demanda."
+    ],
+    "answer": 2
+  },
+  {
+    "id": 7,
+    "source": "2025-II",
+    "sourceQuestion": 7,
+    "question": "El consumo de tres unidades del bien “X” siempre equivale al consumo de dos unidades del bien “Y”. Si el precio de cada unidad del bien “X” es 30 soles y el precio de cada unidad del bien “Y” es 20 soles. Entonces, determine la canasta de consumo (X , Y) que maximiza la utilidad para un presupuesto de 180 soles.",
+    "image": "",
+    "choices": [
+      "(4 , 3)",
+      "(0 , 9)",
+      "(6 , 0)",
+      "(0 , 6)",
+      "En este caso, existen infinitas canastas de consumo que maximizan la utilidad."
+    ],
+    "answer": 1
+  },
+  {
+    "id": 8,
+    "source": "2025-II",
+    "sourceQuestion": 8,
+    "question": "Un domingo, un individuo racional -en términos económicos- deja de asistir a una parrillada con sus amigos para trabajar ese día. Asistir a la parrillada le iba generar satisfacción, pero, gracias a que trabajó durante el domingo, realizó un informe de asesoría para una empresa, por el cual recibió 2.000 soles. Todos los costos en los que incurrió para elaborar el informe suman 800 soles: pago de un ayudante que trabajó con él durante el domingo, pagos en energía eléctrica, papel y tinta de impresora, etc. El individuo conocía con precisión todos los valores previamente indicados antes de tomar la decisión de trabajar el domingo en lugar de asistir a la parrillada. Asuma que el domingo solo podía realizar una de las dos actividades: trabajar o asistir a la parrillada. Entonces:",
+    "image": "",
+    "choices": [
+      "El valor económico neto de la satisfacción (el beneficio neto) que le generaba asistir a la parrillada supera los 2.000 soles.",
+      "El valor económico neto de la satisfacción (el beneficio neto) que le generaba asistir a la parrillada no puede superar los 800 soles.",
+      "El valor económico neto de la satisfacción (el beneficio neto) que le generaba asistir a la parrillada no puede superar los 1.200 soles.",
+      "Si asistía a la parrillada su costo de oportunidad hubiera sido de 2.000 soles.",
+      "Si asistía a la parrillada su costo de oportunidad hubiera sido de 800 soles."
+    ],
+    "answer": 2
+  },
+  {
+    "id": 9,
+    "source": "2026-I",
+    "sourceQuestion": 1,
+    "question": "Indique cuál de las siguientes intervenciones del Estado sí generará una Pérdida de Eficiencia Social (PES) si se aplica en un mercado con una demanda típica y una oferta perfectamente inelástica en todos sus puntos:",
+    "image": "",
+    "choices": [
+      "Un precio máximo menor que el precio de equilibrio.",
+      "Un precio máximo mayor que el precio de equilibrio.",
+      "Un precio mínimo menor que el precio de equilibrio.",
+      "Un precio mínimo mayor que el precio de equilibrio.",
+      "Más de una de las afirmaciones anteriores es correcta."
+    ],
+    "answer": 3
+  },
+  {
+    "id": 10,
+    "source": "2026-I",
+    "sourceQuestion": 2,
+    "question": "El siguiente gráfico muestra la restricción presupuestaria de un consumidor y una curva de indiferencia respecto a dos bienes. El gráfico resalta que la canasta de consumo actual se ubica en el punto “A”.\n\nIndique la afirmación que, sin lugar a dudas, es correcta respecto al escenario plasmado en el gráfico previo:",
+    "image": "images/2026-1_2.png",
+    "choices": [
+      "Para el consumo actual (punto A), la utilidad marginal por sol gastado de X es mayor que la utilidad marginal por sol gastado de Y.",
+      "En el punto A, el número de unidades del bien Y que el consumidor está dispuesto a sacrificar por una unidad adicional del bien X, manteniendo su utilidad constante en U1, es mayor que la relación de precios.",
+      "Partiendo del consumo actual (punto A), el consumidor debe reducir su consumo de X y aumentar su consumo de Y para maximizar la utilidad. Así, debe consumir un punto en la curva U1.",
+      "Partiendo del consumo actual (punto A), se puede alcanzar una curva de indiferencia más alta reduciendo cierta cantidad de un bien y aumentando cierta cantidad del otro bien.",
+      "Más de una afirmación anterior es correcta."
+    ],
+    "answer": 3
+  },
+  {
+    "id": 11,
+    "source": "2026-I",
+    "sourceQuestion": 3,
+    "question": "Riana está analizando el comportamiento de la población limeña con vehículos particulares. Ella tiene tres hallazgos importantes:\n\n(i) Aunque a este grupo le gusta manejar, de vez en cuando toman taxi para evitar pelearse en el tráfico. Así, consumen gasolina (al manejar sus autos propios) y viajes en taxi simultáneamente.\n\n(ii)Existe una elasticidad precio cruzada positiva entre el precio de la gasolina y la cantidad demandada de viajes en taxi.\n\n(iii)Los taxis limeños usan en su mayoría gasolina como insumo.\n\nCon base en esta información y tomando como supuesto que el mercado de viajes en taxi (bien X) y gasolina (bien Y) tienen curvas típicas de oferta y demanda, considere que el mercado de gasolina es afectado por un aumento de costos de producción, indique la afirmación correcta:",
+    "image": "",
+    "choices": [
+      "Con certeza, aumentan el precio de equilibrio y la cantidad de equilibrio de los viajes en taxi.",
+      "Ocurre más de un cambio en los determinantes del mercado de viajes en taxi. Por lo tanto, es posible que disminuya la cantidad de equilibrio en el mercado de viajes en taxi.",
+      "Para un individuo que elige entre los viajes en taxi y la gasolina, no es posible que se mantenga constante el ratio de precios.",
+      "Para un individuo con preferencias (curvas de indiferencia) típicas por los viajes en taxis y la gasolina que estaba maximizando su utilidad antes del aumento en costos de producción, ahora puede alcanzar una mayor curva de indiferencia.",
+      "Más de una de las afirmaciones anteriores es correcta."
+    ],
+    "answer": 1
+  },
+  {
+    "id": 12,
+    "source": "2026-I",
+    "sourceQuestion": 4,
+    "question": "La producción de cemento en Perú puede emplear distintos combustibles para operar. Normalmente, utiliza gas natural como principal fuente energética en sus hornos de alta temperatura, pues es menos costoso que utilizar carbón mineral. No obstante, la ruptura de ductos de gas natural ha generado escasez del mismo; por ello, la industria cementera peruana decidió reemplazar el gas natural por el carbón mineral.\n\nCon base en esta información, y suponiendo que todos los bienes indicados (cemento, gas natural, carbón mineral) tienen curvas de demanda y de oferta típicas, indique la afirmación verdadera con certeza:",
+    "image": "",
+    "choices": [
+      "Ocurre una contracción de demanda en el mercado de cemento a raíz del aumento en el precio del gas natural.",
+      "Aunque las empresas que producen cemento han sustituido el combustible que usan, la cantidad transada de cemento en el nuevo equilibrio es menor que la cantidad transada en el equilibrio inicial.",
+      "El uso de carbón mineral genera un incremento en la cantidad transada de cemento respecto al equilibrio inicial (previo a la ruptura de ductos).",
+      "Ocurren dos cambios en determinantes. Por lo tanto, es posible que la nueva cantidad de equilibrio en el mercado de cemento sea la misma que la inicial.",
+      "Más de una de las afirmaciones anteriores es correcta."
+    ],
+    "answer": 1
+  },
+  {
+    "id": 13,
+    "source": "2026-I",
+    "sourceQuestion": 5,
+    "question": "Maritza está analizando el mercado de los bombones de chocolate. De acuerdo con su investigación, estas eran las curvas de oferta y demanda inversas al inicio del año:\n\nP = 27 - QD/100\n\nP = 3 + QS/50\n\nCuando el mercado se encuentra en equilibrio, el Estado aplica un impuesto a la oferta. Esto logra que la cantidad transada disminuya en 200 unidades. Con base en la información, Indique la afirmación verdadera:",
+    "image": "",
+    "choices": [
+      "La recaudación del Estado asciende a 3000.",
+      "El excedente del consumidor disminuye en 1600.",
+      "Se genera una PES equivalente a 600.",
+      "Los consumidores asumen la mayor carga fiscal del impuesto.",
+      "Más de una de las afirmaciones anteriores es correcta"
+    ],
+    "answer": 2
+  },
+  {
+    "id": 14,
+    "source": "2026-I",
+    "sourceQuestion": 6,
+    "question": "Maritza está analizando el mercado de los bombones de chocolate. De acuerdo con su investigación, estas eran las curvas de oferta y demanda inversas al inicio del año:\n\nP = 27 - QD/100\n\nP = 3 + QS/50\n\nCuando el mercado se encuentra en un equilibrio sin intervención del Estado, ocurre un aumento del 50% en los ingresos de los consumidores. Esto genera que la nueva demanda inversa sea:\n\nP = 33 - QD/100\n\nIndique la afirmación correcta respecto al mercado de bombones de chocolate:",
+    "image": "",
+    "choices": [
+      "La cantidad de equilibrio aumentó en 20%.",
+      "El precio de equilibrio aumentó en 25%.",
+      "El equilibrio final se encuentra en el punto de elasticidad precio unitaria de la nueva curva de demanda.",
+      "La elasticidad ingreso de la demanda es +1.5 en el equilibrio inicial.",
+      "Ninguna de las afirmaciones anteriores es correcta."
+    ],
+    "answer": 3
+  },
+  {
+    "id": 15,
+    "source": "2026-I",
+    "sourceQuestion": 7,
+    "question": "Juliana siempre decide almorzar en un restaurante cerca de su oficina. En un mes regular, gasta S/ 720 (su presupuesto total para almorzar) en consumir 20 platos de pasta (bien X) y 20 platos de ensalada (bien Y), combinación que logra maximizar su utilidad respecto a su presupuesto. Es importante considerar que elige esta combinación a pesar de que la pasta cuesta el doble que la ensalada. El precio de la ensalada es S/ 12.\n\nLuego de un incremento de salario en su trabajo, decide asignar el doble de dinero para sus almuerzos en el restaurante. Al simultáneo, observa que el precio de la ensalada disminuye a S/ 8.\n\nSuponga que para Juliana los platos de pasta (bien X) y los platos de ensalada (bien Y) son bienes perfectamente sustitutos. Indique la afirmación correcta:",
+    "image": "",
+    "choices": [
+      "El intercepto de la restricción presupuestaria con el eje Y (platos de ensalada) es mayor que antes, pero el intercepto de la restricción presupuestaria con el eje X (platos de pasta) es el mismo que antes.",
+      "La caída en el precio de la ensalada no afecta la elección óptima, ya que los bienes son perfectamente sustitutos entre sí.",
+      "Juliana va a aumentar el consumo de platos de ensalada y mantiene su consumo de platos de pasta.",
+      "Tras la caída en el precio de las ensaladas, Juliana gasta todo su dinero en platos de ensalada, consumiendo 160 unidades.",
+      "Ninguna de las afirmaciones anteriores es correcta."
+    ],
+    "answer": 4
+  },
+  {
+    "id": 16,
+    "source": "2026-I",
+    "sourceQuestion": 8,
+    "question": "Juliana siempre decide almorzar en un restaurante cerca de su oficina. En un mes regular, gasta S/ 720 (su presupuesto total para almorzar) en consumir 20 platos de pasta (bien X) y 20 platos de ensalada (bien Y), combinación que logra maximizar su utilidad respecto a su presupuesto. Es importante considerar que elige esta combinación a pesar de que la pasta cuesta el doble que la ensalada. El precio de la ensalada es S/ 12.\n\nLuego de un incremento de salario en su trabajo, decide asignar el doble de dinero para sus almuerzos en el restaurante. Al simultáneo, observa que el precio de la ensalada disminuye a S/ 8.\n\nSuponga que Juliana tiene preferencias típicas en el consumo de los platos de pasta (bien X) y los platos de ensalada (bien Y). En específico, la Tasa Marginal de Sustitución (TMgS) de Y por X de Juliana es expresada con la siguiente fórmula: 2Y/X. Indique la afirmación correcta:",
+    "image": "",
+    "choices": [
+      "Con la nueva combinación óptima, el valor de la TMgS es 2.",
+      "A raíz del aumento en ingreso y la caída en el precio de la ensalada. Juliana debe aumentar el consumo del bien X en 100% y el del bien Y en 200%.",
+      "Tras el aumento en ingreso y la caída en el precio de la ensalada, se gasta la misma cantidad de dinero en el bien X y en el bien Y.",
+      "Es eficiente seguir consumiendo la misma cantidad de ambos bienes (X=Y).",
+      "Ninguna de las afirmaciones anteriores es correcta."
+    ],
+    "answer": 1
+  }
+];
