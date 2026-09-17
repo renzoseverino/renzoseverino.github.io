@@ -117,3 +117,37 @@ This file maps the local files used by each HTML page, grouped by folder.
 ### images
 
 - None.
+
+## midterm.html
+
+### assets
+
+- `assets/css/midterm.css`
+- `assets/js/midterm-data.js`
+- `assets/js/midterm.js`
+- `assets/data/midterm.json`
+
+### docs
+
+- None.
+
+### images
+
+- `images/2025-2_1.png`
+- `images/2025-2_2.png`
+- `images/2026-1_2.png`
+
+## interactive-tax-grid.html
+
+### assets
+
+- `interactive-tax-grid.css` (root-level asset)
+- `interactive-tax-grid.js` (root-level asset)
+
+### docs
+
+- None.
+
+### images
+
+- None.
