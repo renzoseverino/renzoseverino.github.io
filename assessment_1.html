@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Teoría del productor | Renzo Severino</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/assessment_1.css">
+  <script src="assets/js/assessment_1_config.js" defer></script>
+  <script src="assets/js/assessment_1.js" defer></script>
+</head>
+<body>
+  <header class="masthead">
+    <a href="https://renzoseverino.github.io/">Renzo Severino</a>
+    <span>Universidad del Pacífico</span>
+  </header>
+  <main>
+    <p>Responde las siguientes preguntas sin consultar materiales o a tus compañeros. Todas tus respuestas son anónimas.</p>
+    <form id="quiz">
+      <fieldset>
+        <legend><span class="number">01</span> Producto medio y marginal</legend>
+        <p class="prompt">¿Cuál de los siguientes gráficos representa correctamente la relación entre el producto medio (PMe) y el producto marginal (PMg) del trabajo?</p>
+        <div class="graph-options">
+          <label class="graph-option"><span class="option-heading"><input type="radio" name="q1" value="a" required> Gráfico A</span><img src="images/as1_1_a.png" alt="Gráfico A: curvas de PMe y PMg en función del trabajo." width="972" height="720"></label>
+          <label class="graph-option"><span class="option-heading"><input type="radio" name="q1" value="b"> Gráfico B</span><img src="images/as1_1_b.png" alt="Gráfico B: curvas de PMe y PMg en función del trabajo." width="972" height="720"></label>
+          <label class="graph-option"><span class="option-heading"><input type="radio" name="q1" value="c"> Gráfico C</span><img src="images/as1_1_c.png" alt="Gráfico C: curvas de PMe y PMg en función del trabajo." width="972" height="720"></label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend><span class="number">02</span> Zonas de producción</legend>
+        <p class="prompt">Una empresa busca maximizar sus beneficios en el corto plazo. Si decide producir y los precios del producto y de los insumos son positivos, ¿en qué zona de producción tiene sentido operar?</p>
+        <div class="choices">
+          <label><input type="radio" name="q2" value="a" required><span>Zona I: el PMe es creciente.</span></label>
+          <label><input type="radio" name="q2" value="b"><span>Zona II: el PMe es decreciente y el PMg es positivo.</span></label>
+          <label><input type="radio" name="q2" value="c"><span>Zona III: el PMg es negativo.</span></label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend><span class="number">03</span> Rendimientos a escala</legend>
+        <p class="prompt">Una empresa produce 100 unidades utilizando 4 máquinas y 8 trabajadores. Al utilizar 8 máquinas y 16 trabajadores, produce 230 unidades. ¿Qué tipo de rendimientos a escala presenta esta tecnología?</p>
+        <div class="choices">
+          <label><input type="radio" name="q3" value="a" required><span>Rendimientos decrecientes a escala.</span></label>
+          <label><input type="radio" name="q3" value="b"><span>Rendimientos constantes a escala.</span></label>
+          <label><input type="radio" name="q3" value="c"><span>Rendimientos crecientes a escala.</span></label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend><span class="number">04</span> Tasa técnica de sustitución</legend>
+        <p class="prompt">En una combinación de insumos, el producto marginal del trabajo es 12 y el producto marginal del capital es 4. Calcula la TTS del trabajo por capital: ¿cuántas unidades de capital puede sustituir una unidad adicional de trabajo, manteniendo constante la producción? Expresa la tasa como un número positivo.</p>
+        <label class="numeric-label" for="q4">TTS = <input id="q4" name="q4" type="text" inputmode="decimal" maxlength="20" required aria-describedby="q4-unit"><span id="q4-unit">unidades de capital por unidad de trabajo</span></label>
+      </fieldset>
+      <fieldset>
+        <legend><span class="number">05</span> Salarios y recta de isocosto</legend>
+        <p class="prompt">El trabajo está en el eje horizontal y el capital en el eje vertical. Si aumenta el salario, mientras el precio de alquiler del capital y el gasto total de la empresa permanecen constantes, la recta de isocosto:</p>
+        <div class="choices">
+          <label><input type="radio" name="q5" value="a" required><span>Se vuelve más empinada y mantiene el mismo intercepto en el eje del capital.</span></label>
+          <label><input type="radio" name="q5" value="b"><span>Se vuelve más plana y mantiene el mismo intercepto en el eje del capital.</span></label>
+          <label><input type="radio" name="q5" value="c"><span>Se desplaza hacia afuera de forma paralela.</span></label>
+        </div>
+      </fieldset>
+      <div class="form-end"><span id="progress" role="status">0 de 5 preguntas respondidas</span><button type="submit">Revisar respuestas</button></div>
+    </form>
+    <section id="review" hidden aria-labelledby="review-title" tabindex="-1">
+      <h2 id="review-title">Tus respuestas</h2>
+      <dl id="review-answers"></dl>
+      <p id="submission-status" class="draft-note" role="status">Las respuestas aún no se han enviado.</p>
+      <button id="edit" type="button">Volver al quiz</button>
+      <button id="send" type="button">Enviar respuestas</button>
+    </section>
+  </main>
+  <footer>Renzo Severino · Universidad del Pacífico</footer>
+</body>
+</html>
