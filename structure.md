@@ -2,6 +2,10 @@
 
 This file maps the local files used by each HTML page, grouped by folder.
 
+The map covers the active HTML pages at the repository root. `backup/index-demo.html` is an archived template and is excluded. External services and links are excluded from the local file lists.
+
+`index.html` and `SeverinoVenezuela.html` also load `assets/css/fontawesome-all.min.css` through `assets/css/main.css`. The icon stylesheet references the `fa-brands-400`, `fa-regular-400`, and `fa-solid-900` font files in `assets/webfonts/` (EOT, SVG, TTF, WOFF, and WOFF2 formats).
+
 ## index.html
 
 ### assets
@@ -20,7 +24,6 @@ This file maps the local files used by each HTML page, grouped by folder.
 
 - `docs/Severino_CV_English.pdf`
 - `docs/Severino_CV_Español.pdf`
-- `docs/Severino_Venezuela.pdf`
 - `docs/Severino_Teaching.pdf`
 
 ### images
@@ -46,7 +49,7 @@ This file maps the local files used by each HTML page, grouped by folder.
 
 ### docs
 
-- `docs/Severino_Venezuela.pdf`
+- None. The working paper links to SSRN.
 
 ### images
 
@@ -89,7 +92,7 @@ This file maps the local files used by each HTML page, grouped by folder.
 - `assets/css/practice.css`
 - `assets/js/fquestions-data.js`
 - `assets/js/fquestions-app.js`
-- `assets/data/fquestions.json`
+- `assets/data/fquestions.json` (fallback if the embedded question data is unavailable)
 
 ### docs
 
@@ -125,7 +128,7 @@ This file maps the local files used by each HTML page, grouped by folder.
 - `assets/css/midterm.css`
 - `assets/js/midterm-data.js`
 - `assets/js/midterm.js`
-- `assets/data/midterm.json`
+- `assets/data/midterm.json` (fallback if the embedded question data is unavailable)
 
 ### docs
 
@@ -151,3 +154,39 @@ This file maps the local files used by each HTML page, grouped by folder.
 ### images
 
 - None.
+
+## assessment_1.html
+
+### assets
+
+- `assets/css/assessment_1.css`
+- `assets/js/assessment_1_config.js`
+- `assets/js/assessment_1.js`
+
+### docs
+
+- None.
+
+### images
+
+- `images/as1_1_a.png`
+- `images/as1_1_b.png`
+- `images/as1_1_c.png`
+
+## assessment_2.html
+
+### assets
+
+- `assets/css/assessment_2.css`
+- `assets/js/assessment_2_config.js`
+- `assets/js/assessment_2.js`
+
+### docs
+
+- None.
+
+### images
+
+- `images/as1_1_c.png`
+- `images/as1_1_a.png`
+- `images/as1_1_b.png`
